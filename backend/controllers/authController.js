@@ -1,11 +1,11 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const crypto = require("crypto");
-const sendEmail = require("../utils/sendEmail");
-const generateToken = require("../utils/generateToken");
+import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+import crypto from "crypto";
+import generateToken from "../utils/generateToken.js";
+import sendEmail from "../utils/sendEmail.js";
 
 // Registration controller ------------------------------------
-exports.registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
     try {
         const { name, email, password, age, gender, phone } = req.body;
 
@@ -63,7 +63,6 @@ exports.registerUser = async (req, res) => {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
                 age: user.age,
                 gender: user.gender,
                 phone: user.phone,
@@ -78,7 +77,7 @@ exports.registerUser = async (req, res) => {
 };
 
 // Login User Controller ---------------------------------------------------
-exports.loginUser = async (req, res) => {
+export const  loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -129,7 +128,6 @@ exports.loginUser = async (req, res) => {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
                 age: user.age,
                 gender: user.gender,
                 phone: user.phone,
@@ -145,7 +143,7 @@ exports.loginUser = async (req, res) => {
 };
 
 // Logout ------------------------------------------------------------
-exports.logoutUser = async (req, res) => {
+export const logoutUser = async (req, res) => {
     try {
         res.status(200).json({
             success: true,
@@ -161,7 +159,7 @@ exports.logoutUser = async (req, res) => {
 
 // Forgot Password -------------------------------------------------------
 
-exports.forgotPassword = async (req, res) => {
+export const forgotPassword = async (req, res) => {
     try {
 
         const user =
@@ -220,7 +218,7 @@ exports.forgotPassword = async (req, res) => {
     }
 };
 
-exports.resetPassword = async (req, res) => {
+export const resetPassword = async (req, res) => {
   try {
     const resetPasswordToken =
       crypto

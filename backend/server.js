@@ -1,11 +1,12 @@
-const express = require("express");
-const dotenv = require("dotenv");
+import express from "express";
+import dotenv from "dotenv";
 
-const connectDB = require("./config/db");
-const User = require('./models/User');
-const generateToken = require("./utils/generateToken");
-const authRoutes = require("./routes/authRoutes");
-const protect = require("./middlewares/authMiddleware");
+import connectDB from "./config/db.js";
+import User from "./models/User.js";
+import generateToken from "./utils/generateToken.js";
+import authRoutes from "./routes/authRoutes.js";
+import protect from "./middlewares/authMiddleware.js";
+
 
 dotenv.config();
 

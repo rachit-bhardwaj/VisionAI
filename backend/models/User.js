@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const crypto = require("crypto");
+import mongoose from "mongoose";
+import crypto from "crypto";
 
 const userSchema = new mongoose.Schema(
   {
@@ -42,12 +42,6 @@ const userSchema = new mongoose.Schema(
     unique: true
   },
 
-    role: {
-      type: String,
-      enum: ["user", "admin"],
-      default: "user",
-    },
-
     resetPasswordToken: {
       type: String,
     },
@@ -78,4 +72,4 @@ userSchema.methods.getResetPasswordToken = function () {
   return resetToken;
 };
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema);
